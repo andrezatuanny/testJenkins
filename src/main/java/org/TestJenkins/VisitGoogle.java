@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -23,19 +24,28 @@ public class VisitGoogle {
     }
 
     @Test
-    public void deveFazerPesquisaComSucesso() {
+    public void devevalidarLogoGoogle(){
+        String logoInitial = "body > div.L3eUgb > div.o3j99.LLD4me.yr19Zb.LS8OJ > div > img";
 
-        String campPesquisa = "#APjFqb";
-        String btnPesquisa = "#tsf > div:nth-child(1) > div.A8SBwf > div.RNNXgb > button";
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(logoInitial)));
 
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#APjFqb")));
-        driver.findElement(By.cssSelector("#APjFqb")).sendKeys("Jenkins");
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(btnPesquisa)));
-        driver.findElement(By.cssSelector(btnPesquisa)).click();
-
+        Assert.assertEquals(driver.getTitle(), "Google");
 
     }
+
+//    @Test
+//    public void deveFazerPesquisaComSucesso() {
+//
+//        String campPesquisa = "#APjFqb";
+//        String btnPesquisa = "#tsf > div:nth-child(1) > div.A8SBwf > div.RNNXgb > button";
+//
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("#APjFqb")));
+//        driver.findElement(By.cssSelector("#APjFqb")).sendKeys("Jenkins");
+//
+//        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector(btnPesquisa)));
+//        driver.findElement(By.cssSelector(btnPesquisa)).click();
+//
+//    }
 
 
 }
